@@ -10,6 +10,7 @@
 #include "VertexBufferLayout.h"
 #include "VertexArray.h"
 #include "Shader.h"
+#include "Texture.h"
 
 
 int main() {
@@ -80,11 +81,18 @@ int main() {
 		shader.SetUniform4f("u_Color", r, 0.3f, 0.8f, 1.0f);
 
 
+		//texture
+		Texture texture("res/texture/keli.png");
+		texture.Bind();  //para : 0
+		shader.SetUniform1i("u_Texture", 0);
+
+
 		//unbind everything
 		va.UnBind();
 		vb.UnBind();
 		ib.UnBind();
 		shader.UnBind();
+		//TODO https://www.bilibili.com/video/BV1Ni4y1o7Au?p=17&t=1368.5
 
 		Renderer renderer;
 
